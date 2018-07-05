@@ -1,7 +1,7 @@
-# --- IMPORT DEPENDENCIES ------------------------------------------------------+
 
 import numpy as np
 
+# import our files.
 import plotting
 from organism import Organism
 from food import Food
@@ -33,9 +33,10 @@ settings['x_max'] = 2.0        # arena eastern border
 settings['y_min'] = -2.0        # arena southern border
 settings['y_max'] = 2.0        # arena northern border
 
-settings['gif_name'] = 'the coolest gif'    #
-
+# GIF
 settings['plot'] = True         # plot final generation?
+settings['gif_name'] = 'the coolest gif'    #
+settings['gif_fps'] = 20        # frames per second
 
 # ORGANISM NEURAL NET SETTINGS
 settings['inodes'] = 1          # number of input nodes

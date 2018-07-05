@@ -11,7 +11,7 @@ def make_gif(settings):
     gif_name = settings['gif_name'] + datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 
     # frames per second
-    fps = 10
+    fps = settings['gif_fps']
 
     # Get all the pngs in the current directory
     file_list = glob.glob('*.png')
