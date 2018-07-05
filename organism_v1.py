@@ -45,7 +45,7 @@ settings['elitism'] = 0.20      # elitism (selection bias)
 settings['mutate'] = 0.10       # mutation rate
 
 # SIMULATION SETTINGS
-settings['gen_time'] = 100      # generation length         (seconds)
+settings['gen_time'] = 5        # generation length         (seconds)
 settings['dt'] = 0.04           # simulation time step      (dt)
 settings['dr_max'] = 720        # max rotational speed      (degrees per second)
 settings['v_max'] = 0.5         # max velocity              (units per second)
@@ -56,7 +56,7 @@ settings['x_max'] =  2.0        # arena eastern border
 settings['y_min'] = -2.0        # arena southern border
 settings['y_max'] =  2.0        # arena northern border
 
-settings['plot'] = False        # plot final generation?
+settings['plot'] = True         # plot final generation?
 
 # ORGANISM NEURAL NET SETTINGS
 settings['inodes'] = 1          # number of input nodes
@@ -65,7 +65,8 @@ settings['onodes'] = 2          # number of output nodes
 
 #--- FUNCTIONS ----------------------------------------------------------------+
 
-def dist(x1,y1,x2,y2):
+
+def dist(x1, y1, x2, y2):
     return sqrt((x2-x1)**2 + (y2-y1)**2)
 
 
@@ -319,7 +320,7 @@ def run(settings):
 
         # EVOLVE
         organisms, stats = evolve(settings, organisms, gen)
-        print '> GEN:',gen,'BEST:',stats['BEST'],'AVG:',stats['AVG'],'WORST:',stats['WORST']
+        print('> GEN:',gen,'BEST:',stats['BEST'],'AVG:',stats['AVG'],'WORST:',stats['WORST'])
 
     pass
 
