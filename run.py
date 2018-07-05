@@ -1,29 +1,6 @@
 # --- IMPORT DEPENDENCIES ------------------------------------------------------+
 
-# from __future__ import division
-# from collections import defaultdict
-
-# from matplotlib import pyplot as plt
-# from matplotlib.patches import Circle
-# import matplotlib.lines as lines
-
-# from plotting import plot_food
-# from plotting import plot_organism
-
 import numpy as np
-# import operator
-
-# from math import atan2
-# from math import cos
-# from math import degrees
-# from math import floor
-# from math import radians
-# from math import sin
-# from math import sqrt
-# from random import randint
-# from random import random
-# from random import sample
-# from random import uniform
 
 import plotting
 from organism import Organism
@@ -31,6 +8,7 @@ from food import Food
 from simulate import simulate
 from evolve import evolve
 import nn_maths_functions
+import make_gif
 
 # --- CONSTANTS --------------------------------------------------------+
 
@@ -54,6 +32,8 @@ settings['x_min'] = -2.0        # arena western border
 settings['x_max'] = 2.0        # arena eastern border
 settings['y_min'] = -2.0        # arena southern border
 settings['y_max'] = 2.0        # arena northern border
+
+settings['gif_name'] = 'the coolest gif'    #
 
 settings['plot'] = True         # plot final generation?
 
@@ -84,11 +64,11 @@ def run(settings):
         # SIMULATE
         organisms = simulate(settings, organisms, foods, gen)
 
+        # make gif with the plotted images
+
         # EVOLVE
         organisms, stats = evolve(settings, organisms, gen)
         print('> GEN:', gen, 'BEST:', stats['BEST'], 'AVG:', stats['AVG'], 'WORST:', stats['WORST'])
-
-    pass
 
 
 if __name__ == '__main__':

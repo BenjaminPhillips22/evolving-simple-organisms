@@ -1,14 +1,6 @@
 from math import atan2
-# from math import cos
 from math import degrees
-# from math import floor
-# from math import radians
-# from math import sin
 from math import sqrt
-# from random import randint
-# from random import random
-# from random import sample
-# from random import uniform
 
 
 def dist(x1, y1, x2, y2):

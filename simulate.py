@@ -1,29 +1,7 @@
-# from collections import defaultdict
-
-# from matplotlib import pyplot as plt
-# from matplotlib.patches import Circle
-# import matplotlib.lines as lines
-
-# from plotting import plot_food
-# from plotting import plot_organism
-
-# import numpy as np
-# import operator
-
-# from math import atan2
-# from math import cos
-# from math import degrees
-# from math import floor
-# from math import radians
-# from math import sin
-# from math import sqrt
-# from random import randint
-# from random import random
-# from random import sample
-# from random import uniform
 
 import plotting
 import nn_maths_functions
+from make_gif import make_gif
 
 
 def simulate(settings, organisms, foods, gen):
@@ -36,7 +14,7 @@ def simulate(settings, organisms, foods, gen):
         # PLOT SIMULATION FRAME
         if (settings['plot'] is True) and (gen == settings['gens']-1):
             plotting.plot_frame(settings, organisms, foods, gen, t_step)
-        
+
         # UPDATE FITNESS FUNCTION
         for food in foods:
             for org in organisms:
@@ -72,5 +50,8 @@ def simulate(settings, organisms, foods, gen):
             org.update_r(settings)
             org.update_vel(settings)
             org.update_pos(settings)
+
+    if (settings['plot'] is True) and (gen == settings['gens']-1):
+        make_gif(settings)
 
     return organisms

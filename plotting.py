@@ -6,7 +6,7 @@ from math import sin
 from math import cos
 from math import radians
 
-# --- FUNCTIONS ----------------------------------------------------------------+
+# --- FUNCTIONS -------------------------------------------------------+
 
 
 def plot_organism(x1, y1, theta, ax):
@@ -29,9 +29,9 @@ def plot_organism(x1, y1, theta, ax):
 
 def plot_food(x1, y1, ax):
 
-    circle = Circle([x1,y1], 0.03, edgecolor = 'darkslateblue', facecolor = 'mediumslateblue', zorder=5)
+    circle = Circle([x1,y1], 0.03, edgecolor='darkslateblue', facecolor='mediumslateblue', zorder=5)
     ax.add_artist(circle)
-    
+
     pass
 
 
@@ -56,10 +56,7 @@ def plot_frame(settings, organisms, foods, gen, time):
     frame.axes.get_xaxis().set_ticks([])
     frame.axes.get_yaxis().set_ticks([])
 
-    plt.figtext(0.025, 0.95,r'GENERATION: '+str(gen))
-    plt.figtext(0.025, 0.90,r'T_STEP: '+str(time))
+    plt.figtext(0.025, 0.95, r'GENERATION: '+str(gen))
+    plt.figtext(0.025, 0.90, r'T_STEP: '+str(time))
 
     plt.savefig(str(gen)+'-'+str(time)+'.png', dpi=100)
-##    plt.show()
-
-#--- END ----------------------------------------------------------------------+
