@@ -31,15 +31,13 @@ def evolve(settings, organisms_old, gen):
 
     stats['AVG'] = stats['SUM'] / stats['COUNT']
 
-
     # --- ELITISM (KEEP BEST PERFORMING ORGANISMS) ---------+
     orgs_sorted = sorted(organisms_old, key=operator.attrgetter('fitness'), reverse=True)
     organisms_new = []
     for i in range(0, elitism_num):
         organisms_new.append(Organism(settings, wih=orgs_sorted[i].wih, who=orgs_sorted[i].who, name=orgs_sorted[i].name))
 
-
-    #--- GENERATE NEW ORGANISMS ---------------------------+
+    # --- GENERATE NEW ORGANISMS ---------------------------+
     for w in range(0, new_orgs):
 
         # SELECTION (TRUNCATION SELECTION)
@@ -62,9 +60,9 @@ def evolve(settings, organisms_old, gen):
 
             # MUTATE: WIH WEIGHTS
             if mat_pick == 0:
-                index_row = randint(0,settings['hnodes']-1)
+                index_row = randint(0, settings['hnodes']-1)
                 wih_new[index_row] = wih_new[index_row] * uniform(0.9, 1.1)
-                if wih_new[index_row] >  1: wih_new[index_row] = 1
+                if wih_new[index_row] > 1: wih_new[index_row] = 1
                 if wih_new[index_row] < -1: wih_new[index_row] = -1
                 
             # MUTATE: WHO WEIGHTS

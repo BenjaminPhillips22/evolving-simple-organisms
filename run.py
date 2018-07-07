@@ -22,7 +22,8 @@ settings['elitism'] = 0.20      # elitism (selection bias)
 settings['mutate'] = 0.10       # mutation rate
 
 # SIMULATION SETTINGS
-settings['gen_time'] = 5        # generation length         (seconds)
+settings['time_steps'] = 100    # number of time steps in a generation
+# settings['gen_time'] = 5        # generation length         (seconds)
 settings['dt'] = 0.04           # simulation time step      (dt)
 settings['dr_max'] = 720        # max rotational speed      (degrees per second)
 settings['v_max'] = 0.5         # max velocity              (units per second)

@@ -6,7 +6,7 @@ from make_gif import make_gif
 
 def simulate(settings, organisms, foods, gen):
 
-    total_time_steps = int(settings['gen_time'] / settings['dt'])
+    total_time_steps = settings['time_steps']  # int(settings['gen_time'] / settings['dt'])
 
     # --- CYCLE THROUGH EACH TIME STEP ---------------------+
     for t_step in range(0, total_time_steps, 1):
@@ -55,3 +55,4 @@ def simulate(settings, organisms, foods, gen):
         make_gif(settings)
 
     return organisms
+ 

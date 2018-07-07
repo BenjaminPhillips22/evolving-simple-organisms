@@ -9,7 +9,7 @@ from random import uniform
 
 class Organism():
     def __init__(self, settings, wih=None, who=None, name=None):
-        
+
         self.x = uniform(settings['x_min'], settings['x_max'])  # position (x)
         self.y = uniform(settings['y_min'], settings['y_max'])  # position (y)
 
