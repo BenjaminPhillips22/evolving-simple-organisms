@@ -25,9 +25,6 @@ settings['mutate'] = 0.10       # mutation rate
 # SIMULATION SETTINGS
 settings['seed'] = 33           # for reproducibility
 settings['time_steps'] = 100    # time steps in a generation
-# settings['dr_max'] = 720        # max rotational speed      (degrees per second)
-# settings['v_max'] = 0.5         # max velocity              (units per second)
-# settings['dv_max'] = 0.25      # max acceleration (+/-)    (units per second^2)
 
 settings['x_min'] = -2.0        # arena western border
 settings['x_max'] = 2.0        # arena eastern border

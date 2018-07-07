@@ -6,7 +6,7 @@ from make_gif import make_gif
 
 def simulate(settings, organisms, foods, gen):
 
-    total_time_steps = settings['time_steps']  # int(settings['gen_time'] / settings['dt'])
+    total_time_steps = settings['time_steps']
 
     # --- CYCLE THROUGH EACH TIME STEP ---------------------+
     for t_step in range(0, total_time_steps, 1):
@@ -47,12 +47,6 @@ def simulate(settings, organisms, foods, gen):
         # GET ORGANISM RESPONSE
         for org in organisms:
             org.think()
-
-        # UPDATE ORGANISMS POSITION AND VELOCITY
-        # for org in organisms:
-            # org.update_r(settings)
-            # org.update_vel(settings)
-            # org.update_pos(settings)
 
     if plot_final_generation or plot_this_generation:
         make_gif(settings, gen)

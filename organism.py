@@ -53,21 +53,3 @@ class Organism():
         # UPDATE POSITION
         self.x += self.x_velocity
         self.y += self.y_velocity
-
-    # UPDATE HEADING
-    # def update_r(self, settings):
-    #     self.r += self.nn_dr * settings['dr_max'] * settings['dt']
-    #     self.r = self.r % 360
-
-    # UPDATE VELOCITY
-    # def update_vel(self, settings):
-    #     self.v += self.nn_dv * settings['dv_max'] * settings['dt']
-    #     if self.v < 0: self.v = 0
-    #     if self.v > settings['v_max']: self.v = settings['v_max']
-
-    # UPDATE POSITION
-    # def update_pos(self, settings):
-    #     # dx = self.v * cos(radians(self.r)) * settings['dt']
-    #     # dy = self.v * sin(radians(self.r)) * settings['dt']
-    #     self.x += self.x_velocity
-    #     self.y += self.y_velocity
