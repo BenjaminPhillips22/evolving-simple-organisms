@@ -1,19 +1,26 @@
-from math import atan2
-from math import degrees
+
 from math import sqrt
 
 
-def food_xy_dist(org, food):
-    return [food.x-org.x, food.y-org.y]
+def dist(x2, x1, y2, y1):
+    return sqrt((x2-x1)**2 + (y2-y1)**2)
 
 
-def dist(org, food):
-    return sqrt((food.x-org.x)**2 + (food.y-org.y)**2)
+def xy_dist(x2, x1, y2, y1):
+    return [x2-x1, y2-y1]
 
 
-def calc_heading(org, food):
-    d_x = food.x - org.x
-    d_y = food.y - org.y
-    theta_d = degrees(atan2(d_y, d_x)) - org.r
-    if abs(theta_d) > 180: theta_d += 360
-    return theta_d / 180
+def dist_to_food(org, food):
+    return dist(food.x, org.x, food.y, org.y)
+
+
+def xy_dist_to_food(org, food):
+    return xy_dist(food.x, org.x, food.y, org.y)
+
+
+def dist_to_neighbour(org1, org2):
+    return dist(org2.x_tail, org1.x, org2.y_tail, org1.y)
+
+
+def xy_dist_to_neighbour(org1, org2):
+    return xy_dist(org2.x_tail, org1.x, org2.y_tail, org1.y)

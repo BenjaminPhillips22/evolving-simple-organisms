@@ -17,32 +17,66 @@ def simulate(settings, organisms, foods, gen):
         if plot_final_generation or plot_this_generation:
             plotting.plot_frame(settings, organisms, foods, gen, t_step)
 
-        # UPDATE FITNESS FUNCTION
-        for food in foods:
-            for org in organisms:
-                food_org_dist = nn_maths_functions.dist(org, food)
+        # FOR EACH ORGANISM
+        for org1 in organisms:
+
+            # get the closest food
+            for food in foods:
+
+                food_org_dist = nn_maths_functions.dist_to_food(org1, food)
+
+                # update closest food if necessary
+                if food_org_dist < org1.d_food:
+                    org1.d_food = food_org_dist
+                    org1.x_distance_to_food, org1.y_distance_to_food = nn_maths_functions.xy_dist_to_food(org1, food)
 
                 # UPDATE FITNESS FUNCTION
                 if food_org_dist <= 0.075:
-                    org.fitness += food.energy
+                    org1.fitness += food.energy
+                    org1.d_food = 100               # reset d_food
                     food.respawn(settings)
 
-                # RESET DISTANCE AND HEADING TO NEAREST FOOD SOURCE
-                org.d_food = 100
-                org.r_food = 0
+            # get the closest neighbour
+            for org2 in organisms:
 
-        # CALCULATE HEADING TO NEAREST FOOD SOURCE
-        for food in foods:
-            for org in organisms:
+                org_org_dist = nn_maths_functions.dist_to_neighbour(org1, org2)
 
-                # CALCULATE DISTANCE TO SELECTED FOOD PARTICLE
-                food_org_dist = nn_maths_functions.dist(org, food)
+                # update closest food if necessary
+                if org_org_dist < org1.d_neighbour:
+                    org1.d_neighbour = org_org_dist
+                    org1.x_distance_to_neighbour, org1.y_distance_to_neighbour = nn_maths_functions.xy_dist_to_neighbour(org1, org2)
 
-                # DETERMINE IF THIS IS THE CLOSEST FOOD PARTICLE
-                if food_org_dist < org.d_food:
-                    org.d_food = food_org_dist
-                    # org.r_food = nn_maths_functions.calc_heading(org, food)
-                    org.x_distance_to_food, org.y_distance_to_food = nn_maths_functions.food_xy_dist(org, food)
+                # UPDATE FITNESS FUNCTION
+                # if org_org_dist <= 0.075:
+                    # print('these fishies are close!')
+                    # org1.fitness += ?
+                    # org1.d_neighbour = 100               # reset d_food
+                    # org2.respawn # make this
+
+        # # UPDATE FITNESS FUNCTION
+        # for food in foods:
+        #     for org in organisms:
+        #         food_org_dist = nn_maths_functions.dist_to_food(org, food)
+
+        #         # UPDATE FITNESS FUNCTION
+        #         if food_org_dist <= 0.075:
+        #             org.fitness += food.energy
+        #             food.respawn(settings)
+
+        #         # RESET DISTANCE AND HEADING TO NEAREST FOOD SOURCE
+        #         org.d_food = 100
+
+        # # CALCULATE HEADING TO NEAREST FOOD SOURCE
+        # for food in foods:
+        #     for org in organisms:
+
+        #         # CALCULATE DISTANCE TO SELECTED FOOD PARTICLE
+        #         food_org_dist = nn_maths_functions.dist_to_food(org, food)
+
+        #         # DETERMINE IF THIS IS THE CLOSEST FOOD PARTICLE
+        #         if food_org_dist < org.d_food:
+        #             org.d_food = food_org_dist
+        #             org.x_distance_to_food, org.y_distance_to_food = nn_maths_functions.xy_dist_to_food(org, food)
 
         # GET ORGANISM RESPONSE
         for org in organisms:

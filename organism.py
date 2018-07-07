@@ -11,7 +11,9 @@ class Organism():
     def __init__(self, settings, wih=None, who=None, name=None):
 
         self.velocity_decay_factor = settings['velocity_decay_factor']
-        self.max_velocity = settings['max_velocity']
+        self.max_speed = settings['max_speed']
+        self.x_world_size = settings['x_max'] - settings['x_min']
+        self.y_world_size = settings['y_max'] - settings['y_min']
 
         self.x = uniform(settings['x_min'], settings['x_max'])  # position (x)
         self.y = uniform(settings['y_min'], settings['y_max'])  # position (y)
@@ -19,18 +21,16 @@ class Organism():
         self.x_tail = self.x
         self.y_tail = self.y
 
-        self.r = 0  # uniform(0, 360)                 # orientation   [0, 360]
-        # self.v = uniform(0, settings['v_max'])   # velocity      [0, v_max]
-        # self.dv = uniform(-settings['dv_max'], settings['dv_max'])   # dv
-
         self.x_velocity = 0         # velocity in the x direction
         self.y_velocity = 0         # velocity in the y direction
 
-        self.d_food = 100   # distance to nearest food
-        # self.r_food = 0     # orientation to nearest food
+        self.x_distance_to_food = 0         #
+        self.y_distance_to_food = 0         #
+        self.d_food = 100                   # distance to nearest food
 
-        self.x_distance_to_food = 0
-        self.y_distance_to_food = 0
+        self.x_distance_to_neighbour = 0    #
+        self.y_distance_to_neighbour = 0    #
+        self.d_neighbour = 100              # distance to nearest neighbour
 
         self.fitness = 0    # fitness (food count)
 
@@ -46,9 +46,17 @@ class Organism():
         def af(x):
             # activation function
             return np.tanh(x)
-        inputs = [self.x_velocity, self.y_velocity, self.x_distance_to_food, self.y_distance_to_food]
-        h1 = af(np.dot(self.wih, inputs))  # hidden layer
-        out = af(np.dot(self.who, h1))          # output layer
+
+        inputs = [
+            self.x_velocity,
+            self.y_velocity,
+            self.x_distance_to_food,
+            self.y_distance_to_food,
+            self.x_distance_to_neighbour,
+            self.y_distance_to_neighbour
+        ]
+        h1 = af(np.dot(self.wih, inputs))                   # hidden layer
+        out = np.multiply(af(np.dot(self.who, h1)), 0.5)    # output layer
 
         # UPDATE TAIL
         self.x_tail = self.x
@@ -56,9 +64,9 @@ class Organism():
 
         # UPDATE VELOCITIES
         unclipped_x_velocity = float(out[0]) + self.x_velocity*self.velocity_decay_factor
-        self.x_velocity = np.clip(unclipped_x_velocity, -1*self.max_velocity, self.max_velocity)
+        self.x_velocity = unclipped_x_velocity #np.clip(unclipped_x_velocity, -1*self.max_speed, self.max_speed)
         unclipped_y_velocity = float(out[1]) + self.y_velocity*self.velocity_decay_factor
-        self.y_velocity = np.clip(unclipped_y_velocity, -1*self.max_velocity, self.max_velocity)
+        self.y_velocity = unclipped_y_velocity #np.clip(unclipped_y_velocity, -1*self.max_speed, self.max_speed)
 
         # UPDATE POSITION
         self.x += self.x_velocity

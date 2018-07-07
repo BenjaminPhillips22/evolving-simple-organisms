@@ -16,14 +16,14 @@ import make_gif
 settings = {}
 
 # EVOLUTION SETTINGS
-settings['pop_size'] = 10       # number of organisms
+settings['pop_size'] = 30       # number of organisms
 settings['food_num'] = 10      # number of food particles
 settings['gens'] = 6           # number of generations
 settings['elitism'] = 0.20      # elitism (selection bias)
 settings['mutate'] = 0.10       # mutation rate
 
 # SIMULATION SETTINGS
-settings['seed'] = 33           # for reproducibility
+settings['seed'] = 333           # for reproducibility
 settings['time_steps'] = 100    # time steps in a generation
 
 settings['x_min'] = -2.0        # arena western border
@@ -39,10 +39,10 @@ settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 
 # ORGANISM NEURAL NET SETTINGS
-settings['velocity_decay_factor'] = 0.2     # velocity decay factor, so the fish has momentum
-settings['max_velocity'] = 1.1                # clip the velocity at magnitude
-settings['inodes'] = 4                      # number of input nodes
-settings['hnodes'] = 5                      # number of hidden nodes
+settings['velocity_decay_factor'] = 0.1     # velocity decay factor, so the fishies has momentum
+settings['max_speed'] = 1.1                # clip the speed at magnitude
+settings['inodes'] = 6                      # number of input nodes
+settings['hnodes'] = 3                      # number of hidden nodes
 settings['onodes'] = 2                      # number of output nodes
 
 
