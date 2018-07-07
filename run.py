@@ -22,9 +22,9 @@ settings['elitism'] = 0.20      # elitism (selection bias)
 settings['mutate'] = 0.10       # mutation rate
 
 # SIMULATION SETTINGS
-settings['time_steps'] = 100    # number of time steps in a generation
 # settings['gen_time'] = 5        # generation length         (seconds)
-settings['dt'] = 0.04           # simulation time step      (dt)
+# settings['dt'] = 0.04           # simulation time step      (dt)
+settings['time_steps'] = 100    # time steps in a generation
 settings['dr_max'] = 720        # max rotational speed      (degrees per second)
 settings['v_max'] = 0.5         # max velocity              (units per second)
 settings['dv_max'] = 0.25      # max acceleration (+/-)    (units per second^2)
@@ -40,9 +40,10 @@ settings['gif_name'] = 'the coolest gif'    #
 settings['gif_fps'] = 20        # frames per second
 
 # ORGANISM NEURAL NET SETTINGS
-settings['inodes'] = 1          # number of input nodes
-settings['hnodes'] = 5          # number of hidden nodes
-settings['onodes'] = 2          # number of output nodes
+settings['velocity_decay_factor'] = 0.5     # velocity decay factor
+settings['inodes'] = 4                      # number of input nodes
+settings['hnodes'] = 5                      # number of hidden nodes
+settings['onodes'] = 2                      # number of output nodes
 
 
 def run(settings):

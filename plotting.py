@@ -14,11 +14,11 @@ def plot_organism(x1, y1, theta, ax):
     circle = Circle([x1,y1], 0.05, edgecolor='g', facecolor='lightgreen', zorder=8)
     ax.add_artist(circle)
 
-    edge = Circle([x1,y1], 0.05, facecolor='None', edgecolor='darkgreen', zorder=8)
+    edge = Circle([x1,y1], 0.05, edgecolor='darkgreen', facecolor='None', zorder=8)
     ax.add_artist(edge)
 
-    tail_len = 0.075
-    
+    tail_len = 0.1  # 0.075
+ 
     x2 = cos(radians(theta)) * tail_len + x1
     y2 = sin(radians(theta)) * tail_len + y1
 
@@ -59,4 +59,4 @@ def plot_frame(settings, organisms, foods, gen, time):
     plt.figtext(0.025, 0.95, r'GENERATION: '+str(gen))
     plt.figtext(0.025, 0.90, r'T_STEP: '+str(time))
 
-    plt.savefig(str(gen)+'-'+str(time)+'.png', dpi=100)
+    plt.savefig(str(gen)+'-'+str(time)+'.png', dpi=80)  # dpi=100 in original

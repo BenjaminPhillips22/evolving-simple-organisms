@@ -61,9 +61,10 @@ def evolve(settings, organisms_old, gen):
             # MUTATE: WIH WEIGHTS
             if mat_pick == 0:
                 index_row = randint(0, settings['hnodes']-1)
-                wih_new[index_row] = wih_new[index_row] * uniform(0.9, 1.1)
-                if wih_new[index_row] > 1: wih_new[index_row] = 1
-                if wih_new[index_row] < -1: wih_new[index_row] = -1
+                index_col = randint(0, settings['inodes']-1)
+                wih_new[index_row][index_col] = wih_new[index_row][index_col] * uniform(0.9, 1.1)
+                if wih_new[index_row][index_col] > 1: wih_new[index_row][index_col] = 1
+                if wih_new[index_row][index_col] < -1: wih_new[index_row][index_col] = -1
                 
             # MUTATE: WHO WEIGHTS
             if mat_pick == 1:

@@ -18,7 +18,7 @@ def simulate(settings, organisms, foods, gen):
         # UPDATE FITNESS FUNCTION
         for food in foods:
             for org in organisms:
-                food_org_dist = nn_maths_functions.dist(org.x, org.y, food.x, food.y)
+                food_org_dist = nn_maths_functions.dist(org, food)
 
                 # UPDATE FITNESS FUNCTION
                 if food_org_dist <= 0.075:
@@ -34,25 +34,25 @@ def simulate(settings, organisms, foods, gen):
             for org in organisms:
 
                 # CALCULATE DISTANCE TO SELECTED FOOD PARTICLE
-                food_org_dist = nn_maths_functions.dist(org.x, org.y, food.x, food.y)
+                food_org_dist = nn_maths_functions.dist(org, food)
 
                 # DETERMINE IF THIS IS THE CLOSEST FOOD PARTICLE
                 if food_org_dist < org.d_food:
                     org.d_food = food_org_dist
-                    org.r_food = nn_maths_functions.calc_heading(org, food)
+                    # org.r_food = nn_maths_functions.calc_heading(org, food)
+                    org.x_distance_to_food, org.y_distance_to_food = nn_maths_functions.food_xy_dist(org, food)
 
         # GET ORGANISM RESPONSE
         for org in organisms:
             org.think()
 
         # UPDATE ORGANISMS POSITION AND VELOCITY
-        for org in organisms:
-            org.update_r(settings)
-            org.update_vel(settings)
-            org.update_pos(settings)
+        # for org in organisms:
+            # org.update_r(settings)
+            # org.update_vel(settings)
+            # org.update_pos(settings)
 
     if (settings['plot'] is True) and (gen == settings['gens']-1):
         make_gif(settings)
 
     return organisms
- 
