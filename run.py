@@ -33,13 +33,14 @@ settings['y_max'] = 2.0        # arena northern border
 
 # GIF
 settings['plot'] = True                         # plot final generation?
-settings['plot_generations'] = [0, 3]           # plot these generations as well as the final gen
+settings['plot_generations'] = []           # plot these generations as well as the final gen
 settings['gif_name'] = 'the coolest gif'        # gif name will include generation
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 
 # ORGANISM NEURAL NET SETTINGS
 settings['velocity_decay_factor'] = 0.2     # velocity decay factor, so the fish has momentum
+settings['max_velocity'] = 1.1                # clip the velocity at magnitude
 settings['inodes'] = 4                      # number of input nodes
 settings['hnodes'] = 5                      # number of hidden nodes
 settings['onodes'] = 2                      # number of output nodes

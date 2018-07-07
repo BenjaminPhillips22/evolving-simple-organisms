@@ -11,9 +11,13 @@ class Organism():
     def __init__(self, settings, wih=None, who=None, name=None):
 
         self.velocity_decay_factor = settings['velocity_decay_factor']
+        self.max_velocity = settings['max_velocity']
 
         self.x = uniform(settings['x_min'], settings['x_max'])  # position (x)
         self.y = uniform(settings['y_min'], settings['y_max'])  # position (y)
+
+        self.x_tail = self.x
+        self.y_tail = self.y
 
         self.r = 0  # uniform(0, 360)                 # orientation   [0, 360]
         # self.v = uniform(0, settings['v_max'])   # velocity      [0, v_max]
@@ -46,9 +50,15 @@ class Organism():
         h1 = af(np.dot(self.wih, inputs))  # hidden layer
         out = af(np.dot(self.who, h1))          # output layer
 
+        # UPDATE TAIL
+        self.x_tail = self.x
+        self.y_tail = self.y
+
         # UPDATE VELOCITIES
-        self.x_velocity = float(out[0]) + self.x_velocity*self.velocity_decay_factor
-        self.y_velocity = float(out[1]) + self.y_velocity*self.velocity_decay_factor
+        unclipped_x_velocity = float(out[0]) + self.x_velocity*self.velocity_decay_factor
+        self.x_velocity = np.clip(unclipped_x_velocity, -1*self.max_velocity, self.max_velocity)
+        unclipped_y_velocity = float(out[1]) + self.y_velocity*self.velocity_decay_factor
+        self.y_velocity = np.clip(unclipped_y_velocity, -1*self.max_velocity, self.max_velocity)
 
         # UPDATE POSITION
         self.x += self.x_velocity
