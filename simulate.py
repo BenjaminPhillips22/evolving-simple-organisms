@@ -12,7 +12,9 @@ def simulate(settings, organisms, foods, gen):
     for t_step in range(0, total_time_steps, 1):
 
         # PLOT SIMULATION FRAME
-        if (settings['plot'] is True) and (gen == settings['gens']-1):
+        plot_final_generation = (settings['plot'] is True) and (gen == settings['gens']-1)
+        plot_this_generation = (settings['plot'] is True) and (gen in settings['plot_generations'])
+        if plot_final_generation or plot_this_generation:
             plotting.plot_frame(settings, organisms, foods, gen, t_step)
 
         # UPDATE FITNESS FUNCTION
@@ -52,7 +54,7 @@ def simulate(settings, organisms, foods, gen):
             # org.update_vel(settings)
             # org.update_pos(settings)
 
-    if (settings['plot'] is True) and (gen == settings['gens']-1):
-        make_gif(settings)
+    if plot_final_generation or plot_this_generation:
+        make_gif(settings, gen)
 
     return organisms

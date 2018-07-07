@@ -7,3 +7,4 @@ import numpy as np
 a, b = [2,3]
 print(a)
 print(b)
+print((8 in []))

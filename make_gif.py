@@ -1,14 +1,13 @@
 import glob
 import moviepy.editor as mpy
 import os
-import datetime
 
 
 # simulate(settings, organisms, foods, gen)
-def make_gif(settings):
+def make_gif(settings, gen):
 
     # add datetime to gif name
-    gif_name = settings['gif_name'] + datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
+    gif_name = settings['gif_name'] + ' gen-' + str(gen) + settings['datetime']
 
     # frames per second
     fps = settings['gif_fps']
