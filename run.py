@@ -37,7 +37,7 @@ settings['plot_generations'] = []           # plot these generations as well as 
 settings['gif_name'] = 'the coolest gif'        # gif name will include generation
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
-settings['ts_in_gif'] = 20  # settings['time_steps']
+settings['ts_in_gif'] = 10  # settings['time_steps']
 
 # ORGANISM NEURAL NET SETTINGS
 settings['velocity_decay_factor'] = 0.1     # velocity decay factor, so the fishies has momentum

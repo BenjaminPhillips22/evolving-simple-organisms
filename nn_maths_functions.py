@@ -1,5 +1,5 @@
 
-from math import sqrt
+from numpy import sqrt
 
 
 def dist(x2, x1, y2, y1):

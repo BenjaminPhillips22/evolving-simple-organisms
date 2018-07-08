@@ -4,11 +4,11 @@ from collections import defaultdict
 
 from math import floor
 
-from random import randint
-from random import random
-from random import sample
-from random import uniform
-from random import shuffle
+from numpy.random import randint
+from numpy.random import random
+from numpy.random import choice
+from numpy.random import uniform
+from numpy.random import shuffle
 
 from organism import Organism
 
@@ -43,7 +43,7 @@ def evolve(settings, organisms_old, gen):
 
         # SELECTION (TRUNCATION SELECTION)
         canidates = range(0, elitism_num)
-        random_index = sample(canidates, 2)
+        random_index = choice(a=canidates, size=2, replace=False)
         org_1 = orgs_sorted[random_index[0]]
         org_2 = orgs_sorted[random_index[1]]
 
@@ -57,18 +57,18 @@ def evolve(settings, organisms_old, gen):
         if mutate <= settings['mutate']:
 
             # PICK WHICH WEIGHT MATRIX TO MUTATE
-            mat_pick = randint(0, 1)
+            mat_pick = randint(0, 2)
 
             # MUTATE: WIH WEIGHTS
             if mat_pick == 0:
-                index_row = randint(0, settings['hnodes']-1)
-                index_col = randint(0, settings['inodes']-1)
+                index_row = randint(0, settings['hnodes'])
+                index_col = randint(0, settings['inodes'])
                 wih_new[index_row][index_col] = wih_new[index_row][index_col] * uniform(0.9, 1.1)
 
             # MUTATE: WHO WEIGHTS
             if mat_pick == 1:
-                index_row = randint(0, settings['onodes']-1)
-                index_col = randint(0, settings['hnodes']-1)
+                index_row = randint(0, settings['onodes'])
+                index_col = randint(0, settings['hnodes'])
                 who_new[index_row][index_col] = who_new[index_row][index_col] * uniform(0.9, 1.1)
 
         organisms_new.append(Organism(settings, wih=wih_new, who=who_new, name='gen['+str(gen)+']-org['+str(w)+']'))

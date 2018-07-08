@@ -1,8 +1,6 @@
 
 import numpy as np
 
-from random import uniform
-
 
 class Organism():
     def __init__(self, settings, wih=None, who=None, name=None):
@@ -12,8 +10,8 @@ class Organism():
         self.x_world_size = settings['x_max'] - settings['x_min']
         self.y_world_size = settings['y_max'] - settings['y_min']
 
-        self.x = uniform(settings['x_min'], settings['x_max'])  # position (x)
-        self.y = uniform(settings['y_min'], settings['y_max'])  # position (y)
+        self.x = np.random.uniform(settings['x_min'], settings['x_max'])  # position (x)
+        self.y = np.random.uniform(settings['y_min'], settings['y_max'])  # position (y)
 
         self.x_tail = self.x
         self.y_tail = self.y
