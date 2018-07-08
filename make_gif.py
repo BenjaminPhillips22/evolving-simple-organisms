@@ -17,7 +17,7 @@ def make_gif(settings, gen):
 
     # Sort the images
     list.sort(file_list, key=lambda x: int(x.split('.png')[0].split('-')[1]))
-    clip = mpy.ImageSequenceClip(file_list, fps=fps)
+    clip = mpy.ImageSequenceClip(file_list[0:settings['ts_in_gif']-1], fps=fps)
     clip.write_gif('{}.gif'.format(gif_name), fps=fps)
 
     # delete files
