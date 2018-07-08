@@ -50,4 +50,4 @@ def plot_frame(settings, organisms, foods, gen, time):
     plt.figtext(0.025, 0.95, r'GENERATION: '+str(gen))
     plt.figtext(0.025, 0.90, r'T_STEP: '+str(time))
 
-    plt.savefig(str(gen)+'-'+str(time)+'.png', dpi=100)
+    plt.savefig(str(gen)+'-'+str(time)+'.png', dpi=80)
