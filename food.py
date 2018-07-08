@@ -1,5 +1,5 @@
 
-from random import uniform
+from numpy.random import uniform
 
 
 class Food():

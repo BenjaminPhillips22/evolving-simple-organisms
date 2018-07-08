@@ -2,7 +2,7 @@ import operator
 
 from collections import defaultdict
 
-from math import floor
+from numpy import floor
 
 from numpy.random import randint
 from numpy.random import random
