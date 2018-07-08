@@ -47,11 +47,8 @@ def simulate(settings, organisms, foods, gen):
                     org1.x_distance_to_neighbour, org1.y_distance_to_neighbour = nn_maths_functions.xy_dist_to_neighbour(org1, org2)
 
                 # UPDATE FITNESS FUNCTION
-                # if org_org_dist <= 0.075:
-                    # print('these fishies are close!')
-                    # org1.fitness += ?
-                    # org1.d_neighbour = 100               # reset d_food
-                    # org2.respawn # make this
+                if org_org_dist <= 0.035:
+                    org1.fitness -= 0.2
 
         # GET ORGANISM RESPONSE
         for org in organisms:

@@ -16,25 +16,25 @@ from evolve import evolve
 settings = {}
 
 # EVOLUTION SETTINGS
-settings['pop_size'] = 30       # number of organisms
-settings['food_num'] = 10      # number of food particles
-settings['gens'] = 10           # number of generations
-settings['elitism'] = 0.20      # elitism (selection bias)
+settings['pop_size'] = 40       # number of organisms
+settings['food_num'] = 15      # number of food particles
+settings['gens'] = 24           # number of generations
+settings['elitism'] = 0.2      # elitism (selection bias)
 settings['mutate'] = 0.10       # mutation rate
 
 # SIMULATION SETTINGS
 settings['seed'] = 333           # for reproducibility
 settings['time_steps'] = 100    # time steps in a generation
 
-settings['x_min'] = -2.0        # arena western border
-settings['x_max'] = 2.0        # arena eastern border
-settings['y_min'] = -2.0        # arena southern border
-settings['y_max'] = 2.0        # arena northern border
+settings['x_min'] = -3.0        # arena western border
+settings['x_max'] = 3.0        # arena eastern border
+settings['y_min'] = -3.0        # arena southern border
+settings['y_max'] = 3.0        # arena northern border
 
 # GIF
-settings['plot'] = False                         # plot final generation?
-settings['plot_generations'] = []           # plot these generations as well as the final gen
-settings['gif_name'] = 'the coolest gif'        # gif name will include generation
+settings['plot'] = True                         # plot final generation?
+settings['plot_generations'] = []               # plot these generations as well as the final gen
+settings['gif_name'] = 'avoid collisions'        # gif name will include generation
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
@@ -73,7 +73,12 @@ def run(settings):
 
         # EVOLVE
         organisms, stats = evolve(settings, organisms, gen)
-        print('> GEN:', gen, 'BEST:', stats['BEST'], 'AVG:', np.round(stats['AVG'], 2) , 'WORST:', stats['WORST'])
+        print(
+            '> GEN:', gen,
+            'BEST:', np.round(stats['BEST']),
+            'AVG:', np.round(stats['AVG'], 2),
+            'WORST:', np.round(stats['WORST'])
+            )
 
 
 if __name__ == '__main__':
