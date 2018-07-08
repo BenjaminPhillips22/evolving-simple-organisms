@@ -1,9 +1,6 @@
 
 import numpy as np
 
-# from math import cos
-# from math import radians
-# from math import sin
 from random import uniform
 
 
@@ -63,10 +60,8 @@ class Organism():
         self.y_tail = self.y
 
         # UPDATE VELOCITIES
-        unclipped_x_velocity = float(out[0]) + self.x_velocity*self.velocity_decay_factor
-        self.x_velocity = unclipped_x_velocity #np.clip(unclipped_x_velocity, -1*self.max_speed, self.max_speed)
-        unclipped_y_velocity = float(out[1]) + self.y_velocity*self.velocity_decay_factor
-        self.y_velocity = unclipped_y_velocity #np.clip(unclipped_y_velocity, -1*self.max_speed, self.max_speed)
+        self.x_velocity = float(out[0]) + self.x_velocity*self.velocity_decay_factor
+        self.y_velocity = float(out[1]) + self.y_velocity*self.velocity_decay_factor
 
         # UPDATE POSITION
         self.x += self.x_velocity

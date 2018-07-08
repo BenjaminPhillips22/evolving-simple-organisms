@@ -53,31 +53,6 @@ def simulate(settings, organisms, foods, gen):
                     # org1.d_neighbour = 100               # reset d_food
                     # org2.respawn # make this
 
-        # # UPDATE FITNESS FUNCTION
-        # for food in foods:
-        #     for org in organisms:
-        #         food_org_dist = nn_maths_functions.dist_to_food(org, food)
-
-        #         # UPDATE FITNESS FUNCTION
-        #         if food_org_dist <= 0.075:
-        #             org.fitness += food.energy
-        #             food.respawn(settings)
-
-        #         # RESET DISTANCE AND HEADING TO NEAREST FOOD SOURCE
-        #         org.d_food = 100
-
-        # # CALCULATE HEADING TO NEAREST FOOD SOURCE
-        # for food in foods:
-        #     for org in organisms:
-
-        #         # CALCULATE DISTANCE TO SELECTED FOOD PARTICLE
-        #         food_org_dist = nn_maths_functions.dist_to_food(org, food)
-
-        #         # DETERMINE IF THIS IS THE CLOSEST FOOD PARTICLE
-        #         if food_org_dist < org.d_food:
-        #             org.d_food = food_org_dist
-        #             org.x_distance_to_food, org.y_distance_to_food = nn_maths_functions.xy_dist_to_food(org, food)
-
         # GET ORGANISM RESPONSE
         for org in organisms:
             org.think()

@@ -70,8 +70,6 @@ def run(settings):
         # SIMULATE
         organisms = simulate(settings, organisms, foods, gen)
 
-        # make gif with the plotted images
-
         # EVOLVE
         organisms, stats = evolve(settings, organisms, gen)
         print('> GEN:', gen, 'BEST:', stats['BEST'], 'AVG:', stats['AVG'], 'WORST:', stats['WORST'])

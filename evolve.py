@@ -8,6 +8,7 @@ from random import randint
 from random import random
 from random import sample
 from random import uniform
+from random import shuffle
 
 from organism import Organism
 
@@ -63,17 +64,17 @@ def evolve(settings, organisms_old, gen):
                 index_row = randint(0, settings['hnodes']-1)
                 index_col = randint(0, settings['inodes']-1)
                 wih_new[index_row][index_col] = wih_new[index_row][index_col] * uniform(0.9, 1.1)
-                # if wih_new[index_row][index_col] > 1: wih_new[index_row][index_col] = 1
-                # if wih_new[index_row][index_col] < -1: wih_new[index_row][index_col] = -1
 
             # MUTATE: WHO WEIGHTS
             if mat_pick == 1:
                 index_row = randint(0, settings['onodes']-1)
                 index_col = randint(0, settings['hnodes']-1)
                 who_new[index_row][index_col] = who_new[index_row][index_col] * uniform(0.9, 1.1)
-                # if who_new[index_row][index_col] >  1: who_new[index_row][index_col] = 1
-                # if who_new[index_row][index_col] < -1: who_new[index_row][index_col] = -1
-                    
+
         organisms_new.append(Organism(settings, wih=wih_new, who=who_new, name='gen['+str(gen)+']-org['+str(w)+']'))
-                
+
+    # SHUFFLE ORGANISMS (this may be needed depending on future edits to fitness)
+    # works inplace
+    shuffle(organisms_new)
+
     return organisms_new, stats
