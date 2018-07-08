@@ -39,6 +39,9 @@ def simulate(settings, organisms, foods, gen):
             # get the closest neighbour
             for org2 in organisms:
 
+                if org1 is org2:
+                    pass
+
                 org_org_dist = nn_maths_functions.dist_to_neighbour(org1, org2)
 
                 # update closest food if necessary
@@ -48,7 +51,7 @@ def simulate(settings, organisms, foods, gen):
 
                 # UPDATE FITNESS FUNCTION
                 if org_org_dist <= 0.035:
-                    org1.fitness -= 0.2
+                    org1.fitness -= 0.0  #1
 
         # GET ORGANISM RESPONSE
         for org in organisms:
