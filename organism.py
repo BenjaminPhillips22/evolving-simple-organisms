@@ -6,7 +6,6 @@ class Organism():
     def __init__(self, settings, wih=None, who=None, name=None):
 
         self.velocity_decay_factor = settings['velocity_decay_factor']
-        self.max_speed = settings['max_speed']
         self.x_world_size = settings['x_max'] - settings['x_min']
         self.y_world_size = settings['y_max'] - settings['y_min']
 
