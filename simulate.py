@@ -26,8 +26,7 @@ def simulate(settings, organisms, foods, gen):
         # FOR EACH ORGANISM
         for org1 in organisms:
 
-            # clear org1.d_food so it can find the closest food again.
-            # org1.d_food = 10000
+            # find closest food
             closest_dist_so_far = 10000
 
             # get the closest food
@@ -48,7 +47,9 @@ def simulate(settings, organisms, foods, gen):
                     # SET FOOD AS 'EATEN'
                     food.energy = 0
                     org1.d_food = 10000
-                    # food.respawn(settings)
+
+            # find closest org
+            closest_dist_so_far = 10000
 
             # get the closest neighbour
             for org2 in organisms:
@@ -59,13 +60,13 @@ def simulate(settings, organisms, foods, gen):
                 org_org_dist = nn_maths_functions.dist_to_neighbour(org1, org2)
 
                 # update closest food if necessary
-                if org_org_dist < org1.d_neighbour:
-                    org1.d_neighbour = org_org_dist
+                if org_org_dist < closest_dist_so_far:
+                    closest_dist_so_far = org_org_dist
                     org1.x_distance_to_neighbour, org1.y_distance_to_neighbour = nn_maths_functions.xy_dist_to_neighbour(org1, org2)
 
                 # UPDATE FITNESS FUNCTION
-                if org_org_dist <= 0.035:
-                    org1.fitness -= 0.0  #1
+                if org_org_dist <= 0.10:
+                    org1.fitness -= 0.1  #
 
         # GET FOOD RESPONSE
         for food in foods:

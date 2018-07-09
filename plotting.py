@@ -57,7 +57,7 @@ def plot_frame(settings, organisms, foods, gen, time):
 
 def plot_stats(settings, gen_stats):
     
-    file_name = settings['gif_name'] + settings['datetime'] + '.jpg'
+    file_name = settings['name'] + settings['datetime'] + '.jpg'
 
     ng = len(gen_stats)
     

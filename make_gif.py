@@ -7,7 +7,7 @@ import os
 def make_gif(settings, gen):
 
     # add datetime to gif name
-    gif_name = settings['gif_name'] + ' gen-' + str(gen) + settings['datetime']
+    gif_name = settings['name'] + ' gen-' + str(gen) + settings['datetime']
 
     # frames per second
     fps = settings['gif_fps']

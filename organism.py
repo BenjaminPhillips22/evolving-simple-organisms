@@ -10,8 +10,8 @@ class Organism():
         self.x_world_size = settings['x_max'] - settings['x_min']
         self.y_world_size = settings['y_max'] - settings['y_min']
 
-        self.x = np.random.uniform(settings['x_min'], settings['x_max'])  # position (x)
-        self.y = np.random.uniform(settings['y_min'], settings['y_max'])  # position (y)
+        self.x = np.random.uniform(settings['x_min'], settings['x_max'])
+        self.y = np.random.uniform(settings['y_min'], settings['y_max'])
 
         self.x_tail = self.x
         self.y_tail = self.y
@@ -21,11 +21,9 @@ class Organism():
 
         self.x_distance_to_food = 0         #
         self.y_distance_to_food = 0         #
-        self.d_food = 10000                   # distance to nearest food
 
         self.x_distance_to_neighbour = 0    #
         self.y_distance_to_neighbour = 0    #
-        self.d_neighbour = 10000              # distance to nearest neighbour
 
         self.fitness = 0    # fitness (food count)
 
@@ -47,8 +45,8 @@ class Organism():
             self.y_velocity,
             self.x_distance_to_food,
             self.y_distance_to_food,
-            # self.x_distance_to_neighbour,
-            # self.y_distance_to_neighbour
+            self.x_distance_to_neighbour,
+            self.y_distance_to_neighbour
         ]
         h1 = af(np.dot(self.wih, inputs))                   # hidden layer
         out = np.multiply(af(np.dot(self.who, h1)), 0.5)    # output layer

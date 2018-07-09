@@ -15,12 +15,15 @@ import make_gif
 
 settings = {}
 
+# FILE DETAILS
+settings['name'] = 'the greatest show on earth'
+
 # EVOLUTION SETTINGS
-settings['pop_size'] = 30       # number of organisms
-settings['food_num'] = 12      # number of food particles
-settings['gens'] = 16           # number of generations
-settings['elitism'] = 0.2      # elitism (selection bias)
-settings['mutate'] = 0.05       # mutation rate
+settings['pop_size'] = 50       # number of organisms
+settings['food_num'] = 20      # number of food particles
+settings['gens'] = 31           # number of generations
+settings['elitism'] = 0.25      # elitism (selection bias)
+settings['mutate'] = 0.210       # mutation rate
 
 # SIMULATION SETTINGS
 settings['seed'] = 333           # for reproducibility
@@ -33,16 +36,15 @@ settings['y_max'] = 3.0        # arena northern border
 
 # GIF
 settings['plot'] = True                         # plot final generation?
-settings['plot_generations'] = []               # plot these generations as well as the final gen
-settings['gif_name'] = 'hopsies 0 col loss'        # gif name will include generation
+# plot these generations as well as the final gen
+settings['plot_generations'] = list(range(0, 5, 1)) + list(range(10, 30, 5))
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
 
 # ORGANISM NEURAL NET SETTINGS
 settings['velocity_decay_factor'] = 0.12     # velocity decay factor, so the fishies has momentum
-settings['max_speed'] = 1.1                # clip the speed at magnitude, I don't end up using this.
-settings['inodes'] = 4                      # number of input nodes
+settings['inodes'] = 6                      # number of input nodes
 settings['hnodes'] = 5                      # number of hidden nodes
 settings['onodes'] = 2                      # number of output nodes
 
