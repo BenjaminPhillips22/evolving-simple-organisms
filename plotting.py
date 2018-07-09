@@ -30,8 +30,10 @@ def plot_frame(settings, organisms, foods, gen, time):
     fig, ax = plt.subplots()
     fig.set_size_inches(9.6, 5.4)
 
-    plt.xlim([settings['x_min'] + settings['x_min'] * 0.25, settings['x_max'] + settings['x_max'] * 0.25])
-    plt.ylim([settings['y_min'] + settings['y_min'] * 0.25, settings['y_max'] + settings['y_max'] * 0.25])
+    plt.xlim([settings['x_min'] + settings['x_min'] * 0.45, settings['x_max'] + settings['x_max'] * 0.45])
+    plt.ylim([settings['y_min'] + settings['y_min'] * 0.45, settings['y_max'] + settings['y_max'] * 0.45])
+    # plt.xlim([-10, 10])
+    # plt.ylim([-10, 10])
 
     # PLOT ORGANISMS
     for organism in organisms:
@@ -51,3 +53,29 @@ def plot_frame(settings, organisms, foods, gen, time):
     plt.figtext(0.025, 0.90, r'T_STEP: '+str(time))
 
     plt.savefig(str(gen)+'-'+str(time)+'.png', dpi=120)
+
+
+def plot_stats(settings, gen_stats):
+    
+    file_name = settings['gif_name'] + settings['datetime'] + '.jpg'
+
+    ng = len(gen_stats)
+    
+    # get stats
+    gens = list(range(ng))
+    bests = [gen_stats[i]['BEST'] for i in range(ng)]
+    worsts = [gen_stats[i]['WORST'] for i in range(ng)]
+    avgs = [gen_stats[i]['AVG'] for i in range(ng)]
+    
+    fig, ax = plt.subplots()
+
+    ax.plot(gens, bests)
+    ax.plot(gens, avgs)
+    ax.plot(gens, worsts)
+
+    ax.legend(['Best', 'Average', 'Worst'], loc='upper left')
+    ax.set_xlabel('generation')
+    ax.set_ylabel('fitness score')
+
+    # SAVE FIGURE
+    fig.savefig(file_name, dpi=120)

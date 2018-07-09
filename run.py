@@ -18,7 +18,7 @@ settings = {}
 # EVOLUTION SETTINGS
 settings['pop_size'] = 30       # number of organisms
 settings['food_num'] = 10      # number of food particles
-settings['gens'] = 30           # number of generations
+settings['gens'] = 10           # number of generations
 settings['elitism'] = 0.2      # elitism (selection bias)
 settings['mutate'] = 0.10       # mutation rate
 
@@ -32,9 +32,9 @@ settings['y_min'] = -2.0        # arena southern border
 settings['y_max'] = 2.0        # arena northern border
 
 # GIF
-settings['plot'] = True                         # plot final generation?
+settings['plot'] = False                         # plot final generation?
 settings['plot_generations'] = []               # plot these generations as well as the final gen
-settings['gif_name'] = 'test2 no collision penalty'        # gif name will include generation
+settings['gif_name'] = 'test stats'        # gif name will include generation
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
@@ -66,6 +66,7 @@ def run(settings):
         organisms.append(Organism(settings, wih_init, who_init, name='gen[x]-org['+str(i)+']'))
 
     # --- CYCLE THROUGH EACH GENERATION --------------------+
+    gen_stats = []
     for gen in range(0, settings['gens']):
 
         # SIMULATE
@@ -73,6 +74,10 @@ def run(settings):
 
         # EVOLVE
         organisms, stats = evolve(settings, organisms, gen)
+        
+        # SAVE GEN STATS
+        gen_stats.append(stats)
+
         print(
             '> GEN:', gen,
             'BEST:', np.round(stats['BEST']),
@@ -80,6 +85,7 @@ def run(settings):
             'WORST:', np.round(stats['WORST'])
             )
 
+    plotting.plot_stats(settings, gen_stats)
 
 if __name__ == '__main__':
     run(settings)
