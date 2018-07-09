@@ -1,4 +1,6 @@
 
+from numpy.random import shuffle
+
 import plotting
 import nn_maths_functions
 from make_gif import make_gif
@@ -11,6 +13,10 @@ def simulate(settings, organisms, foods, gen):
     # --- CYCLE THROUGH EACH TIME STEP ---------------------+
     for t_step in range(0, total_time_steps, 1):
 
+        # SHUFFLE ORGANISMS (works inplace)
+        # I don't want to favour the orgs at the beginning of the list
+        shuffle(organisms)
+
         # PLOT SIMULATION FRAME
         plot_final_generation = (settings['plot'] is True) and (gen == settings['gens']-1)
         plot_this_generation = (settings['plot'] is True) and (gen in settings['plot_generations'])
@@ -20,21 +26,29 @@ def simulate(settings, organisms, foods, gen):
         # FOR EACH ORGANISM
         for org1 in organisms:
 
+            # clear org1.d_food so it can find the closest food again.
+            # org1.d_food = 10000
+            closest_dist_so_far = 10000
+
             # get the closest food
             for food in foods:
 
                 food_org_dist = nn_maths_functions.dist_to_food(org1, food)
 
                 # update closest food if necessary
-                if food_org_dist < org1.d_food:
-                    org1.d_food = food_org_dist
+                # if food_org_dist < org1.d_food:
+                if food_org_dist < closest_dist_so_far:
+                    # org1.d_food = food_org_dist
+                    closest_dist_so_far = food_org_dist
                     org1.x_distance_to_food, org1.y_distance_to_food = nn_maths_functions.xy_dist_to_food(org1, food)
 
                 # UPDATE FITNESS FUNCTION
                 if food_org_dist <= 0.075:
                     org1.fitness += food.energy
-                    org1.d_food = 100               # reset d_food
-                    food.respawn(settings)
+                    # SET FOOD AS 'EATEN'
+                    food.energy = 0
+                    org1.d_food = 10000
+                    # food.respawn(settings)
 
             # get the closest neighbour
             for org2 in organisms:
@@ -51,7 +65,11 @@ def simulate(settings, organisms, foods, gen):
 
                 # UPDATE FITNESS FUNCTION
                 if org_org_dist <= 0.035:
-                    org1.fitness -= 0.1  #1
+                    org1.fitness -= 0.0  #1
+
+        # GET FOOD RESPONSE
+        for food in foods:
+            food.respawn(settings)
 
         # GET ORGANISM RESPONSE
         for org in organisms:

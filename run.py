@@ -17,24 +17,24 @@ settings = {}
 
 # EVOLUTION SETTINGS
 settings['pop_size'] = 30       # number of organisms
-settings['food_num'] = 10      # number of food particles
-settings['gens'] = 10           # number of generations
+settings['food_num'] = 12      # number of food particles
+settings['gens'] = 16           # number of generations
 settings['elitism'] = 0.2      # elitism (selection bias)
-settings['mutate'] = 0.10       # mutation rate
+settings['mutate'] = 0.05       # mutation rate
 
 # SIMULATION SETTINGS
 settings['seed'] = 333           # for reproducibility
-settings['time_steps'] = 150    # time steps in a generation
+settings['time_steps'] = 100    # time steps in a generation
 
-settings['x_min'] = -2.0        # arena western border
-settings['x_max'] = 2.0        # arena eastern border
-settings['y_min'] = -2.0        # arena southern border
-settings['y_max'] = 2.0        # arena northern border
+settings['x_min'] = -3.0        # arena western border
+settings['x_max'] = 3.0        # arena eastern border
+settings['y_min'] = -3.0        # arena southern border
+settings['y_max'] = 3.0        # arena northern border
 
 # GIF
-settings['plot'] = False                         # plot final generation?
+settings['plot'] = True                         # plot final generation?
 settings['plot_generations'] = []               # plot these generations as well as the final gen
-settings['gif_name'] = 'test stats'        # gif name will include generation
+settings['gif_name'] = 'hopsies 0 col loss'        # gif name will include generation
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
@@ -42,8 +42,8 @@ settings['ts_in_gif'] = settings['time_steps']
 # ORGANISM NEURAL NET SETTINGS
 settings['velocity_decay_factor'] = 0.12     # velocity decay factor, so the fishies has momentum
 settings['max_speed'] = 1.1                # clip the speed at magnitude, I don't end up using this.
-settings['inodes'] = 6                      # number of input nodes
-settings['hnodes'] = 3                      # number of hidden nodes
+settings['inodes'] = 4                      # number of input nodes
+settings['hnodes'] = 5                      # number of hidden nodes
 settings['onodes'] = 2                      # number of output nodes
 
 
@@ -80,12 +80,13 @@ def run(settings):
 
         print(
             '> GEN:', gen,
-            'BEST:', np.round(stats['BEST']),
+            'BEST:', np.round(stats['BEST'], 2),
             'AVG:', np.round(stats['AVG'], 2),
-            'WORST:', np.round(stats['WORST'])
+            'WORST:', np.round(stats['WORST'], 2)
             )
 
     plotting.plot_stats(settings, gen_stats)
+
 
 if __name__ == '__main__':
     run(settings)

@@ -1,14 +1,11 @@
 import operator
 
-from collections import defaultdict
-
 from numpy import floor
 
 from numpy.random import randint
 from numpy.random import random
 from numpy.random import choice
 from numpy.random import uniform
-from numpy.random import shuffle
 
 from organism import Organism
 
@@ -19,12 +16,13 @@ def evolve(settings, organisms_old, gen):
     new_orgs = settings['pop_size'] - elitism_num
 
     # --- GET STATS FROM CURRENT GENERATION ----------------+
-    stats = defaultdict(int)
+    # stats = defaultdict(int)
+    stats = {'BEST': -1000, 'WORST': 1000, 'SUM': 0, 'COUNT': 0}
     for org in organisms_old:
-        if org.fitness > stats['BEST'] or stats['BEST'] == 0:
+        if org.fitness > stats['BEST']:
             stats['BEST'] = org.fitness
 
-        if org.fitness < stats['WORST'] or stats['WORST'] == 0:
+        if org.fitness < stats['WORST']:
             stats['WORST'] = org.fitness
 
         stats['SUM'] += org.fitness
@@ -72,9 +70,5 @@ def evolve(settings, organisms_old, gen):
                 who_new[index_row][index_col] = who_new[index_row][index_col] * uniform(0.9, 1.1)
 
         organisms_new.append(Organism(settings, wih=wih_new, who=who_new, name='gen['+str(gen)+']-org['+str(w)+']'))
-
-    # SHUFFLE ORGANISMS (this may be needed depending on future edits to fitness)
-    # works inplace
-    shuffle(organisms_new)
 
     return organisms_new, stats

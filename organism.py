@@ -21,11 +21,11 @@ class Organism():
 
         self.x_distance_to_food = 0         #
         self.y_distance_to_food = 0         #
-        self.d_food = 100                   # distance to nearest food
+        self.d_food = 10000                   # distance to nearest food
 
         self.x_distance_to_neighbour = 0    #
         self.y_distance_to_neighbour = 0    #
-        self.d_neighbour = 100              # distance to nearest neighbour
+        self.d_neighbour = 10000              # distance to nearest neighbour
 
         self.fitness = 0    # fitness (food count)
 
@@ -47,8 +47,8 @@ class Organism():
             self.y_velocity,
             self.x_distance_to_food,
             self.y_distance_to_food,
-            self.x_distance_to_neighbour,
-            self.y_distance_to_neighbour
+            # self.x_distance_to_neighbour,
+            # self.y_distance_to_neighbour
         ]
         h1 = af(np.dot(self.wih, inputs))                   # hidden layer
         out = np.multiply(af(np.dot(self.who, h1)), 0.5)    # output layer
