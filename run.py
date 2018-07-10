@@ -36,7 +36,7 @@ settings['y_max'] = 3.0        # arena northern border
 # GIF
 settings['plot'] = True                         # plot final generation?
 # plot these generations as well as the final gen
-settings['plot_generations'] = [10] #list(range(0, 10, 1)) + list(range(10, 51, 5))
+settings['plot_generations'] = [0, 10] #list(range(0, 10, 1)) + list(range(10, 51, 5))
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
