@@ -40,7 +40,8 @@ def evolve(settings, organisms_old, gen):
     for w in range(0, new_orgs):
 
         # SELECTION (TRUNCATION SELECTION)
-        canidates = range(0, elitism_num)
+        # canidates = range(0, elitism_num)
+        canidates = range(0, settings['pop_size']-1)
         random_index = choice(a=canidates, size=2, replace=False)
         org_1 = orgs_sorted[random_index[0]]
         org_2 = orgs_sorted[random_index[1]]

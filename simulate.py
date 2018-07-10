@@ -66,7 +66,7 @@ def simulate(settings, organisms, foods, gen):
 
                 # UPDATE FITNESS FUNCTION
                 if org_org_dist <= 0.10:
-                    org1.fitness -= 0.1  #
+                    org1.fitness -= 0.05  #
 
         # GET FOOD RESPONSE
         for food in foods:
