@@ -16,7 +16,7 @@ import make_gif
 settings = {}
 
 # FILE DETAILS
-settings['name'] = 'the greatest show on earth'
+settings['name'] = 'the_greatest_show_on_earth'
 
 # EVOLUTION SETTINGS
 settings['pop_size'] = 30       # number of organisms
@@ -38,7 +38,7 @@ settings['plot'] = True                         # plot final generation?
 # plot these generations as well as the final gen
 settings['plot_generations'] = [0, 10] #list(range(0, 10, 1)) + list(range(10, 51, 5))
 settings['gif_fps'] = 12                        # frames per second
-settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
+settings['datetime'] = datetime.datetime.now().strftime('_%Y-%m-%d_%H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
 
 # ORGANISM NEURAL NET SETTINGS
