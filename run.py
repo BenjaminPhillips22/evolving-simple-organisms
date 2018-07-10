@@ -21,7 +21,7 @@ settings['name'] = 'the_greatest_show_on_earth'
 # EVOLUTION SETTINGS
 settings['pop_size'] = 50       # number of organisms
 settings['food_num'] = 27      # number of food particles
-settings['gens'] = 1000           # number of generations
+settings['gens'] = 150           # number of generations
 settings['elitism'] = 0.50      # elitism (selection bias)
 settings['mutate'] = 0.2     # mutation rate
 
@@ -87,6 +87,13 @@ def run(settings):
             )
 
     plotting.plot_stats(settings, gen_stats)
+    for i in range(settings['gens']):
+        print(
+            '> GEN:', i,
+            'BEST:', np.round(gen_stats[i]['BEST'], 2),
+            'AVG:', np.round(gen_stats[i]['AVG'], 2),
+            'WORST:', np.round(gen_stats[i]['WORST'], 2)
+            )
 
 
 if __name__ == '__main__':

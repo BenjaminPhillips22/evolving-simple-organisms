@@ -78,4 +78,4 @@ def plot_stats(settings, gen_stats):
     ax.set_ylabel('fitness score')
 
     # SAVE FIGURE
-    fig.savefig(file_name, dpi=120)
+    fig.savefig(file_name, dpi=200)
