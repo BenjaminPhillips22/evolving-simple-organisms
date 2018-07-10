@@ -4,6 +4,7 @@ from numpy.random import shuffle
 import plotting
 import nn_maths_functions
 from make_gif import make_gif
+from tqdm import tqdm
 
 
 def simulate(settings, organisms, foods, gen):
@@ -11,7 +12,7 @@ def simulate(settings, organisms, foods, gen):
     total_time_steps = settings['time_steps']
 
     # --- CYCLE THROUGH EACH TIME STEP ---------------------+
-    for t_step in range(0, total_time_steps, 1):
+    for t_step in tqdm(range(0, total_time_steps, 1)):
 
         # SHUFFLE ORGANISMS (works inplace)
         # I don't want to favour the orgs at the beginning of the list

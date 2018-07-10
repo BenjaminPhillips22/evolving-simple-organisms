@@ -21,8 +21,8 @@ settings['name'] = 'the greatest show on earth'
 # EVOLUTION SETTINGS
 settings['pop_size'] = 30       # number of organisms
 settings['food_num'] = 10      # number of food particles
-settings['gens'] = 10           # number of generations
-settings['elitism'] = 0.25      # elitism (selection bias)
+settings['gens'] = 20           # number of generations
+settings['elitism'] = 0.50      # elitism (selection bias)
 settings['mutate'] = 0.2     # mutation rate
 
 # SIMULATION SETTINGS
@@ -36,7 +36,7 @@ settings['y_max'] = 3.0        # arena northern border
 # GIF
 settings['plot'] = True                         # plot final generation?
 # plot these generations as well as the final gen
-settings['plot_generations'] = [0] #list(range(0, 10, 1)) + list(range(10, 51, 5))
+settings['plot_generations'] = [10] #list(range(0, 10, 1)) + list(range(10, 51, 5))
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime(' %Y-%m-%d %H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']

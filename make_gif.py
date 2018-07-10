@@ -21,4 +21,5 @@ def make_gif(settings, gen):
     clip.write_gif('{}.gif'.format(gif_name), fps=fps)
 
     # delete files
+    del clip
     a = [os.remove(f) for f in file_list]
