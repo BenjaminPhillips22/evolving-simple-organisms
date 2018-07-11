@@ -19,15 +19,15 @@ settings = {}
 settings['name'] = 'the_greatest_show_on_earth'
 
 # EVOLUTION SETTINGS
-settings['pop_size'] = 50       # number of organisms
-settings['food_num'] = 27      # number of food particles
-settings['gens'] = 310           # number of generations
+settings['pop_size'] = 30       # number of organisms
+settings['food_num'] = 15      # number of food particles
+settings['gens'] = 20           # number of generations
 settings['elitism'] = 0.50      # elitism (selection bias)
 settings['mutate'] = 0.2     # mutation rate
 
 # SIMULATION SETTINGS
 settings['seed'] = 333           # for reproducibility
-settings['time_steps'] = 250    # time steps in a generation
+settings['time_steps'] = 100    # time steps in a generation
 settings['x_min'] = -3.0        # arena western border
 settings['x_max'] = 3.0        # arena eastern border
 settings['y_min'] = -3.0        # arena southern border
@@ -36,7 +36,7 @@ settings['y_max'] = 3.0        # arena northern border
 # GIF
 settings['plot'] = True                         # plot final generation?
 # plot these generations as well as the final gen
-settings['plot_generations'] = [307, 308] #list(range(200, 1000, 100))
+settings['plot_generations'] = []  # list(range(200, 1000, 100))
 settings['gif_fps'] = 12                        # frames per second
 settings['datetime'] = datetime.datetime.now().strftime('_%Y-%m-%d_%H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
@@ -75,7 +75,7 @@ def run(settings):
 
         # EVOLVE
         organisms, stats = evolve(settings, organisms, gen)
-        
+
         # SAVE GEN STATS
         gen_stats.append(stats)
 
@@ -87,13 +87,6 @@ def run(settings):
             )
 
     plotting.plot_stats(settings, gen_stats)
-    for i in range(settings['gens']):
-        print(
-            '> GEN:', i,
-            'BEST:', np.round(gen_stats[i]['BEST'], 2),
-            'AVG:', np.round(gen_stats[i]['AVG'], 2),
-            'WORST:', np.round(gen_stats[i]['WORST'], 2)
-            )
 
 
 if __name__ == '__main__':
