@@ -42,7 +42,7 @@ settings['datetime'] = datetime.datetime.now().strftime('_%Y-%m-%d_%H-%M-%S')
 settings['ts_in_gif'] = settings['time_steps']
 
 # ORGANISM NEURAL NET SETTINGS
-settings['velocity_decay_factor'] = 0.12     # velocity decay factor, so the fishies has momentum
+settings['velocity_decay_factor'] = 0.12     # velocity decay factor, so the fishies have momentum
 settings['inodes'] = 6                      # number of input nodes
 settings['hnodes'] = 5                      # number of hidden nodes
 settings['onodes'] = 2                      # number of output nodes
