@@ -22,7 +22,7 @@ settings['name'] = 'the_greatest_show_on_earth'
 settings['pop_size'] = 30       # number of organisms
 settings['food_num'] = 15      # number of food particles
 settings['gens'] = 20           # number of generations
-settings['elitism'] = 0.50      # elitism (selection bias)
+settings['elitism'] = 0.50      # elitism (percent of population to keep and allow to have children)
 settings['mutate'] = 0.2     # mutation rate
 
 # SIMULATION SETTINGS
